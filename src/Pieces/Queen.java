@@ -6,9 +6,10 @@ public class Queen extends Piece {
     }
 
     @Override
-    public boolean isValid(int to, boolean capture, boolean castle) {
+    public boolean isValid(int to, boolean capture, boolean castle, Piece[] squares) {
         return false;
     }
+
 
     public String toString(){
         return this.isWhite() ? "Q" : "q";

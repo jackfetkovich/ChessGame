@@ -9,7 +9,7 @@ public abstract class Piece {
         this.position = position;
     }
 
-    public abstract boolean isValid(int to, boolean capture, boolean castle);
+    public abstract boolean isValid(int to, boolean capture, boolean castle, Piece[] squares);
 
     public boolean isWhite(){
         return this.color;

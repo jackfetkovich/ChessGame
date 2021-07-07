@@ -21,7 +21,7 @@ public class Pawn extends Piece{
         return this.isWhite() ? "P": "p";
     }
 
-    public boolean isValid(int to, boolean capture, boolean castle){
+    public boolean isValid(int to, boolean capture, boolean castle, Piece[] squares){
 
         // Standard pawn moves - if pawn has not moved, it can move 2 squares, else, only 1
         if(!hasMoved && !capture){

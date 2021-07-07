@@ -46,20 +46,30 @@ public class Board {
 
     void display(){
         StringBuilder sb = new StringBuilder();
+        boolean color = true;
 
         for(int i = 0; i < squares.length; i++){
 
             if(squares[i] != null){
                 sb.append(squares[i].toString()).append(" ");
             } else {
-                sb.append("x ");
+                if(color){
+                    sb.append("\u25A0 ");
+                } else {
+                    sb.append("\u25A1 ");
+                }
+
             }
             if(i % 8 == 7){
-                System.out.println(sb.toString() + "\n");
+                System.out.println(sb.toString());
                 sb.setLength(0);
             }
 
+            if(i % 8 != 7){
+                color = !color;
+            }
         }
+        System.out.println("\n\n");
     }
 
     int movePiece(int from, int to){
@@ -86,7 +96,7 @@ public class Board {
         //TODO: Implement castling
 
         // Checks that the piece is ALLOWED to move in that way
-        if(!squares[from].isValid(to, capture, false)){
+        if(!squares[from].isValid(to, capture, false, this.squares)){
             return -1;
         }
 
