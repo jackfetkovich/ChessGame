@@ -5,10 +5,14 @@ public class Queen extends Piece {
         super(white, position);
     }
 
+    @Override
+    public boolean isValid(int to, boolean capture, boolean castle) {
+        return false;
+    }
+
     public String toString(){
         return this.isWhite() ? "Q" : "q";
     }
-    public boolean isValid(int to){
-        return false;
-    }
+
+
 }

@@ -9,11 +9,9 @@ public abstract class Piece {
         this.position = position;
     }
 
-    public boolean isValid(int to){
-        return false;
-    }
+    public abstract boolean isValid(int to, boolean capture, boolean castle);
 
-    boolean isWhite(){
+    public boolean isWhite(){
         return this.color;
     }
 
@@ -21,7 +19,7 @@ public abstract class Piece {
         return this.position;
     }
 
-    void setPosition(int position){
+    public void setPosition(int position){
         this.position = position;
     }
 }

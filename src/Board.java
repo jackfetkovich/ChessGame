@@ -63,10 +63,45 @@ public class Board {
     }
 
     int movePiece(int from, int to){
-        // Checks that the piece is ALLOWED to move in that way
-        if(!squares[from].isValid(to)){
+        // Makes sure the piece you want to move exists
+        if(squares[from] == null){
             return -1;
         }
-        return 1;
+        boolean capture = false;
+
+        // Checks if there is a piece on the square you want to move to
+        if(squares[to] != null){
+            // If there is a piece on that square, it can't be of the same color as the piece being moved
+            if((squares[from].isWhite() && squares[to].isWhite()) || (!squares[from].isWhite() && !squares[to].isWhite())){
+                return -1;
+            } else {
+                capture = true;
+            }
+        }
+
+        //TODO: Implement en passant moves
+
+        // Checks for en passant pawn moves
+
+        //TODO: Implement castling
+
+        // Checks that the piece is ALLOWED to move in that way
+        if(!squares[from].isValid(to, capture, false)){
+            return -1;
+        }
+
+        if(!capture){
+            squares[to] = squares[from];
+            squares[from] = null;
+            squares[to].setPosition(to);
+
+        } else {
+            squares[to].setPosition(-1);
+            squares[to] = squares[from];
+            squares[to].setPosition(to);
+            squares[from] = null;
+        }
+
+        return 0;
     }
 }
